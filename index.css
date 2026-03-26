@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+}
+
+:root {
+  /* Dark Futuristic Theme */
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  
+  /* Neon Cyan */
+  --primary: 188 86% 53%;
+  --primary-foreground: 240 10% 4%;
+  
+  /* Deep Blue/Grey for secondary elements */
+  --secondary: 240 15% 15%;
+  --secondary-foreground: 0 0% 98%;
+  
+  /* Neon Purple */
+  --accent: 280 86% 60%;
+  --accent-foreground: 0 0% 98%;
+  
+  /* Dark frosted glass for cards */
+  --card: 240 12% 8%;
+  --card-foreground: 0 0% 98%;
+  
+  --muted: 240 10% 12%;
+  --muted-foreground: 240 5% 65%;
+  
+  --border: 240 15% 20%;
+  --ring: 188 86% 53%;
+  
+  --destructive: 350 80% 60%;
+  --destructive-foreground: 0 0% 98%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased font-body;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(188, 19, 254, 0.05), transparent 25%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-wide uppercase;
+  }
+}
+
+/* Custom Slider Styling */
+input[type=range] {
+  -webkit-appearance: none;
+  @apply w-full bg-transparent;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  @apply w-full h-2 rounded-full bg-secondary border border-border/50;
+  transition: all 0.2s ease;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  @apply w-6 h-6 rounded-full bg-background border-2 border-primary shadow-[0_0_10px_rgba(0,243,255,0.5)] cursor-pointer;
+  margin-top: -8px;
+  transition: all 0.2s ease;
+}
+
+input[type=range]:focus::-webkit-slider-thumb {
+  @apply shadow-[0_0_15px_rgba(0,243,255,0.8)] scale-110;
+}
+
+input[type=range]::-moz-range-track {
+  @apply w-full h-2 rounded-full bg-secondary border border-border/50;
+}
+
+input[type=range]::-moz-range-thumb {
+  @apply w-6 h-6 rounded-full bg-background border-2 border-primary shadow-[0_0_10px_rgba(0,243,255,0.5)] cursor-pointer;
+  transition: all 0.2s ease;
+}
+
+/* Glass panel utility */
+.glass-panel {
+  @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
+
+/* Cyber text glow */
+.text-glow {
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+}
+.text-glow-accent {
+  text-shadow: 0 0 10px rgba(188, 19, 254, 0.5), 0 0 20px rgba(188, 19, 254, 0.3);
+}
